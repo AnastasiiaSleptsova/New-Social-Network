@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { AuthMeResponse, FollowResponse, GetUsersParams, GetUsersResponse, LoginRequest, LoginResponse, ProfileResponse, UnfollowResponse } from '../types'
+import { myBaseQuery } from './query/baseQuery.ts'
 
 export const socialApi = createApi({
     reducerPath: 'socialApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://social-network.samuraijs.com/api/1.0/' }),
+    baseQuery: myBaseQuery,
     tagTypes: ['User', 'Profile', 'Auth'],
     endpoints: (builder) => ({
       // AUTH
