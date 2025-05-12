@@ -1,6 +1,6 @@
 import React from 'react'
-import { useGetUsersQuery } from '../../app/api.ts'
-import UserCard from '../../components/UserCard.tsx'
+import { useGetUsersQuery } from '@shared/api/api'
+import UserCard from '../../components/UserCard'
 
 const UsersPage: React.FC = () => {
   const { data, error, isLoading } = useGetUsersQuery({ page: 1, count: 10 })

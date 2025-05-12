@@ -1,6 +1,7 @@
-import { useGetUsersQuery } from '../app/api.tsx'
-import UserCard from '../components/UserCard.tsx'
-import React, {useState } from "react"
+import {useState } from "react"
+
+import { useGetUsersQuery } from '@shared/api/api'
+import UserCard from '../components/UserCard'
 
 
 export const UsersPage = () => {

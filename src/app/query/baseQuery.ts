@@ -4,7 +4,7 @@ import {
     type FetchArgs,
     type FetchBaseQueryError,
   } from '@reduxjs/toolkit/query'
-import { appRoutes } from '../../shared/const/appRouter/index.ts';
+import { appRoutes } from '@shared/const/appRouter';
 
 const baseQuery = fetchBaseQuery({ 
       baseUrl: 'https://social-network.samuraijs.com/api/1.0/',  

@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "lib": ["DOM", "DOM.Iterable", "ES2022"],
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "jsx": "react-jsx",
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "src",
+        "paths": {
+            "@features/*": ["features/*"],
+            "@components/*": ["components/*"],
+            "@pages/*": ["pages/*"],
+            "@shared/*": ["shared/*"],
+            "@router/*": ["router/*"],
+            "@app/*": ["app/*"]
+        }
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "build", "dist"]
+  }
+  

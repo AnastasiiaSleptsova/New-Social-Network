@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { useGetProfileQuery } from '../../app/api.ts'
+import { useGetProfileQuery } from '@shared/api/api'
 
 const ProfilePage: React.FC = () => {
   const { userId } = useParams<{ userId: string }>()

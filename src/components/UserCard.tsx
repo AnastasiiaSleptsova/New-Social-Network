@@ -1,6 +1,6 @@
 import React from 'react'
 import { User } from '../types'
-import { useFollowUserMutation, useUnfollowUserMutation } from '../app/api.ts'
+import { useFollowUserMutation, useUnfollowUserMutation } from '@shared/api/api'
 import { Link } from 'react-router-dom'
 
 interface Props {

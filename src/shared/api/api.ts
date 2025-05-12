@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { AuthMeResponse, FollowResponse, GetUsersParams, GetUsersResponse, LoginRequest, LoginResponse, ProfileResponse, UnfollowResponse } from '../types'
-import { myBaseQuery } from './query/baseQuery.ts'
+import { createApi } from '@reduxjs/toolkit/query/react'
+import { AuthMeResponse, FollowResponse, GetUsersParams, GetUsersResponse, LoginRequest, LoginResponse, ProfileResponse, UnfollowResponse } from '../../types'
+import { myBaseQuery } from '../../app/query/baseQuery'
 
 export const socialApi = createApi({
     reducerPath: 'socialApi',
@@ -12,6 +12,7 @@ export const socialApi = createApi({
         query: () => 'auth/me',
         providesTags: ['Auth'],
       }),
+      
       login: builder.mutation<LoginResponse, LoginRequest>({
         query: (body) => ({
           url: 'auth/login',
@@ -20,6 +21,7 @@ export const socialApi = createApi({
         }),
         invalidatesTags: ['Auth'],
       }),
+
       logout: builder.mutation<void, void>({
         query: () => ({
           url: 'auth/login',
