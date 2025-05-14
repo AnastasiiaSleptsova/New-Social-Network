@@ -6,8 +6,8 @@ const LoginPage = () => {
  
 
   return (
-    <div className="max-w-xs mx-auto mt-20">
-      <h1 className="text-2xl font-bold mb-4">Login</h1>
+    <div >
+      <h1>Login</h1>
       <LoginForm />
     </div>
   )

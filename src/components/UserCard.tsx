@@ -2,6 +2,8 @@ import React from 'react'
 import { User } from '../types'
 import { useFollowUserMutation, useUnfollowUserMutation } from '@shared/api/api'
 import { Link } from 'react-router-dom'
+import defaultAvatar from '@shared/assets/smallAvatar.png'
+import styles from './styles.module.scss'
 
 interface Props {
   user: User
@@ -20,13 +22,21 @@ const UserCard: React.FC<Props> = ({ user }) => {
   }
 
   return (
-    <div style={{ border: '1px solid gray', marginBottom: 10, padding: 10 }}>
-      <Link to={`/profile/${user.id}`}>
-        <h3>{user.name}</h3>
+    <div className={styles.card}>
+      <Link to={`/profile/${user.id}`} className={styles.link}>
+        <img
+          src={user.photos.small || defaultAvatar}
+          alt={user.name}
+          className={styles.avatar}
+        />
+        <h3 className={styles.name}>{user.name}</h3>
       </Link>
-      <p>{user.status}</p>
-      <button onClick={handleFollow}>
-        {user.followed ? 'Unfollow' : 'Follow'}
+      <p className={styles.status}>{user.status || 'Без статуса'}</p>
+      <button
+        className={styles.button}
+        onClick={handleFollow}
+      >
+        {user.followed ? 'Отписаться' : 'Подписаться'}
       </button>
     </div>
   )
