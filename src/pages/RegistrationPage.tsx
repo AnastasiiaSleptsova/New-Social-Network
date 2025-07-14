@@ -1,6 +1,6 @@
 import React from 'react'
-import { Header } from 'widgets/Header'
 import { RegistrationForm } from '@features/Auth'
+import { Header } from '@widgets/Header'
 
 import styles from './RegisterPage.module.scss'
 

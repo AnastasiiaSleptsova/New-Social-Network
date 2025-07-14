@@ -1,10 +1,11 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
-import { Navbar } from 'widgets/Navbar/ui/Navbar'
 
-import styles from './HomePage.module.scss'
 import ProfilePage from '@features/Profile/ProfilePage'
 import { useGetMeQuery } from '@shared/api/api'
+import { Navbar } from '@widgets/Navbar/ui/Navbar'
+
+import styles from './HomePage.module.scss'
 
 const HomePage: React.FC = () => {
   const { data: me, isLoading } = useGetMeQuery()

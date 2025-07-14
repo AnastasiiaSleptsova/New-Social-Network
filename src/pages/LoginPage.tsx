@@ -1,6 +1,6 @@
 import React from 'react'
 import { LoginForm } from '@features/Auth'
-import { Header } from 'widgets/Header'
+import { Header } from '@widgets/Header'
 
 import styles from './LoginPage.module.scss'
 

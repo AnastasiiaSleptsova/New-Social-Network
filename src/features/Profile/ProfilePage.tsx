@@ -1,8 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetProfileQuery } from '@shared/api/api'
-import { Navbar } from 'widgets/Navbar/ui/Navbar'
 import defaultAvatar from '@shared/assets/smallAvatar.png'
+import { Navbar } from '@widgets/Navbar/ui/Navbar'
 
 import styles from './ProfilePage.module.scss'
 

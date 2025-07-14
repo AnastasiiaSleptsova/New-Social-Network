@@ -18,7 +18,8 @@
             "@shared/*": ["shared/*"],
             "@router/*": ["router/*"],
             "@app/*": ["app/*"],
-            "@entities/*": ["entities/*"]
+            "@entities/*": ["entities/*"],
+            "@widgets/*": ["widgets/*"]
         }
     },
     "include": ["src"],
