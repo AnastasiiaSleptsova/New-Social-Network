@@ -21,8 +21,6 @@ export const myBaseQuery: BaseQueryFn<
 > = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions)
 
-    // console.log('result = ', result)
-
     if (result.error && result.error.status === 401) {
         // TODO убрать 'as'
         const errorData = result.error.data as { message?: string };
@@ -33,6 +31,5 @@ export const myBaseQuery: BaseQueryFn<
         }
     }
 
-    result = await baseQuery(args, api, extraOptions)
     return result
 }
