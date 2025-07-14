@@ -8,7 +8,7 @@ export const socialApi = createApi({
     tagTypes: ['User', 'Profile', 'Auth'],
     endpoints: (builder) => ({
       // AUTH
-      me: builder.query<AuthMeResponse, void>({
+      getMe: builder.query<AuthMeResponse, void>({
         query: () => 'auth/me',
         providesTags: ['Auth'],
       }),
@@ -71,7 +71,7 @@ export const socialApi = createApi({
   
   // Экспортируем хуки
   export const {
-    useMeQuery,
+    useGetMeQuery,
     useLoginMutation,
     useLogoutMutation,
     useGetUsersQuery,

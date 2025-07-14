@@ -6,6 +6,7 @@ import AppRouter from './router/AppRouter'
 import './app/styles/index.scss'
 
 const App: React.FC = () => {
+
   return (
     <BrowserRouter>
       <AppRouter />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useGetUsersQuery } from '@shared/api/api'
-import UserCard from '../../components/UserCard'
+import UserCard from '../../widgets/UserCard.tsx/UserCard'
 import { Navbar } from 'widgets/Navbar/ui/Navbar'
 
 import styles from './styles.module.scss'

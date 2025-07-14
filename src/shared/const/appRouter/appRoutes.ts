@@ -2,5 +2,5 @@ export const appRoutes = {
     main: '/',
     login: '/login',
     users: '/users',
-    profile: '/profile'
+    profile: '/profile',
 } as const

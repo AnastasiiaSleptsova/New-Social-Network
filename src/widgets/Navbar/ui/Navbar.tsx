@@ -16,8 +16,8 @@ export const Navbar = () => {
                 <NavLink to="/users" className={getNavLinkClass}>
                     Пользователи
                 </NavLink>
-                <NavLink to="/something" className={getNavLinkClass}>
-                    Что-то ещё
+                <NavLink to="/messages" className={getNavLinkClass}>
+                    Сообщения
                 </NavLink>
             </nav>
         </aside>

@@ -1,19 +1,16 @@
 import React from 'react'
-import { LoginForm } from '@features/Auth'
 import { Header } from 'widgets/Header'
+import { RegistrationForm } from '@features/Auth'
 
-import styles from './LoginPage.module.scss'
+import styles from './RegisterPage.module.scss'
 
-const LoginPage = () => {
-  
+export const RegistrationPage: React.FC = () => {
   return (
     <div className={styles.root}>
       <Header />
       <main className={styles.main}>
-        <LoginForm />
+        <RegistrationForm />
       </main>
     </div>
   )
 }
-
-export default LoginPage

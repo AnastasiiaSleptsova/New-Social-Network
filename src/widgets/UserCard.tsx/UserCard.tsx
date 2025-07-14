@@ -1,5 +1,5 @@
 import React from 'react'
-import { User } from '../types'
+import { User } from '../../types'
 import { useFollowUserMutation, useUnfollowUserMutation } from '@shared/api/api'
 import { Link } from 'react-router-dom'
 import defaultAvatar from '@shared/assets/smallAvatar.png'

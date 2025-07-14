@@ -1,54 +1,65 @@
-import React, { useState } from "react"
+import React from "react"
+import { useForm } from "react-hook-form"
 import { useLoginMutation } from "@shared/api/api"
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+
+import styles from './LoginForm.module.scss'
+import { setIsAuth } from "@entities/Session/model/authSlice"
+import { useDispatch } from "react-redux"
+
+type FormData = {
+  email: string
+  password: string
+}
 
 export const LoginForm = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [login] = useLoginMutation() // RTK Query hook
-    const navigate = useNavigate() // Для редиректа
-  
-    const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault()
-      try {
-        await login({ email, password }) // Пробуем авторизоваться
-        navigate('/profile') // Если логин успешен, редиректим на страницу профиля
-      } catch (error) {
-        console.error('Ошибка при логине', error)
-      }
-    }
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>()
+  const [login, { isLoading }] = useLoginMutation()
+  const dispatch = useDispatch()
 
-    return (
-        <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 mt-1 border border-gray-300 rounded"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 mt-1 border border-gray-300 rounded"
-            required
-          />
-        </div>
-        <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded">
-          Log In
-        </button>
-      </form>
-    )
+  const onSubmit = async (data: FormData) => {
+    try {
+      await login(data).unwrap()
+      dispatch(setIsAuth(true))
+      
+    } catch (err) {
+      // TODO Можно сделать state errorMessage, или вывести тост об ошибке
+      console.error("Ошибка авторизации", err)
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <div className={styles.formGroup}>
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          {...register("email", { required: "Email обязателен" })}
+        />
+        {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="password">Пароль</label>
+        <input
+          id="password"
+          type="password"
+          {...register("password", {
+            required: "Пароль обязателен",
+            minLength: { value: 6, message: "Минимум 6 символов" },
+          })}
+        />
+        {errors.password && <p className={styles.error}>{errors.password.message}</p>}
+      </div>
+
+      <button type="submit" className={styles.submitButton} disabled={isLoading}>
+        {isLoading ? "Входим..." : "Войти"}
+      </button>
+
+      <div className={styles.registerHint}>
+        Ещё не зарегистрированы? <Link to="/register">Создать аккаунт</Link>
+      </div>
+    </form>
+  )
 }

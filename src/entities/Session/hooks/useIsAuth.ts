@@ -1,16 +1,11 @@
-import { useMeQuery } from "@shared/api/api"
-import { useCallback, useEffect, useState } from "react"
+import { useAppDispatch, useAppSelector } from "@app/store"
+import { clearAuth } from "../model/authSlice"
 
 export const useIsAuth = () => {
-    const [isAuth, setIsAuth] = useState(false)
+    const dispatch = useAppDispatch()
+    const isAuth = useAppSelector((state) => state.auth.isAuth)
 
-    const { data: me, isLoading } = useMeQuery()
+    const handleClearAuth = () => dispatch(clearAuth())
 
-    const clearAuth = useCallback(() => setIsAuth(false), [])
-
-    useEffect(() => {
-        setIsAuth(!!me?.data?.id)
-    }, [me])
-
-    return {isAuth, isLoading, clearAuth}
+  return { isAuth, clearAuth: handleClearAuth }
 }

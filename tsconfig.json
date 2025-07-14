@@ -17,7 +17,8 @@
             "@pages/*": ["pages/*"],
             "@shared/*": ["shared/*"],
             "@router/*": ["router/*"],
-            "@app/*": ["app/*"]
+            "@app/*": ["app/*"],
+            "@entities/*": ["entities/*"]
         }
     },
     "include": ["src"],
