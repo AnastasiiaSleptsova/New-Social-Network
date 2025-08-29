@@ -1,7 +1,7 @@
 import React from "react"
 import { useForm } from "react-hook-form"
 import { useLoginMutation } from "@shared/api/api"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 
 import styles from './LoginForm.module.scss'
 import { setIsAuth } from "@entities/Session/model/authSlice"
@@ -56,10 +56,6 @@ export const LoginForm = () => {
       <button type="submit" className={styles.submitButton} disabled={isLoading}>
         {isLoading ? "Входим..." : "Войти"}
       </button>
-
-      <div className={styles.registerHint}>
-        Ещё не зарегистрированы? <Link to="/register">Создать аккаунт</Link>
-      </div>
     </form>
   )
 }
