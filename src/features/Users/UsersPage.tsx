@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
-import { useGetUsersQuery } from '@shared/api/api'
-import UserCard from '@widgets/UserCard.tsx/UserCard'
-import { Navbar } from '@widgets/Navbar/ui/Navbar'
+import React, { useState } from "react";
+import { useGetUsersQuery } from "@shared/api/api";
+import UserCard from "@widgets/UserCard.tsx/UserCard";
+import { Navbar } from "@widgets/Navbar/ui/Navbar";
 
-import styles from './styles.module.scss'
+import styles from "./styles.module.scss";
 
 const UsersPage: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1)
-  const { data, error, isLoading } = useGetUsersQuery({ page: currentPage, count: 10 })
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data, error, isLoading } = useGetUsersQuery({
+    page: currentPage,
+    count: 10,
+  });
 
-  if (isLoading) return <p className={styles.status}>Загрузка пользователей...</p>
-  if (error) return <p className={styles.status}>Ошибка при загрузке</p>
+  if (isLoading)
+    return <p className={styles.status}>Загрузка пользователей...</p>;
+  if (error) return <p className={styles.status}>Ошибка при загрузке</p>;
 
   return (
     <div className={styles.root}>
@@ -36,7 +40,7 @@ const UsersPage: React.FC = () => {
         </div>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default UsersPage
+export default UsersPage;

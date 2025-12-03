@@ -1,21 +1,23 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import { useGetProfileQuery } from '@shared/api/api'
-import defaultAvatar from '@shared/assets/smallAvatar.png'
-import { Navbar } from '@widgets/Navbar/ui/Navbar'
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useGetProfileQuery } from "@shared/api/api";
+import defaultAvatar from "@shared/assets/smallAvatar.png";
+import { Navbar } from "@widgets/Navbar/ui/Navbar";
 
-import styles from './ProfilePage.module.scss'
+import styles from "./ProfilePage.module.scss";
 
 const ProfilePage: React.FC = () => {
-  const { userId } = useParams<{ userId: string | undefined }>()
+  const { userId } = useParams<{ userId: string | undefined }>();
 
-  const isInvalidId = isNaN(Number(userId)) || Number(userId) === 0
-  const correctId = Number(userId)
+  const isInvalidId = isNaN(Number(userId)) || Number(userId) === 0;
+  const correctId = Number(userId);
 
-  const { data, error, isLoading } = useGetProfileQuery(correctId, { skip: isInvalidId })
+  const { data, error, isLoading } = useGetProfileQuery(correctId, {
+    skip: isInvalidId,
+  });
 
-  if (isLoading) return <p>Загрузка профиля...</p>
-  if (error || !data) return <p>Ошибка при загрузке профиля</p>
+  if (isLoading) return <p>Загрузка профиля...</p>;
+  if (error || !data) return <p>Ошибка при загрузке профиля</p>;
 
   return (
     <div className={styles.root}>
@@ -29,15 +31,17 @@ const ProfilePage: React.FC = () => {
         <div className={styles.info}>
           <h2 className={styles.name}>{data.fullName}</h2>
           <p className={styles.about}>
-            <strong>О себе:</strong> {data.aboutMe || 'Не указано'}
+            <strong>О себе:</strong> {data.aboutMe || "Не указано"}
           </p>
           {data.lookingForAJob && (
-            <p className={styles.job}>🔍 Ищу работу: {data.lookingForAJobDescription}</p>
+            <p className={styles.job}>
+              🔍 Ищу работу: {data.lookingForAJobDescription}
+            </p>
           )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProfilePage
+export default ProfilePage;

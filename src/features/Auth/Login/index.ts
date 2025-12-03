@@ -1,1 +1,1 @@
-export { useTryInstallSession } from './hooks/useTryInstallSession'
+export { useTryInstallSession } from "./hooks/useTryInstallSession";

@@ -1,35 +1,46 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { appRoutes } from "@shared/const/appRouter";
+// import ProfilePage from '@features/Profile/ProfilePage'
+import { useGetMeQuery } from "@shared/api/api";
+// import { Navbar } from '@widgets/Navbar/ui/Navbar'
+import styles from "./HomePage.module.scss";
 
-import ProfilePage from '@features/Profile/ProfilePage'
-import { useGetMeQuery } from '@shared/api/api'
-import { Navbar } from '@widgets/Navbar/ui/Navbar'
+// const HomePage: React.FC = () => {
+//   const { data: me, isLoading } = useGetMeQuery()
 
-import styles from './HomePage.module.scss'
+//   if (isLoading) {
+//     return <h1>Загрузка...</h1>
+//   }
+
+//   if (!me?.data.id) {
+//     return null
+//   }
+
+//   if (me) {
+//     return <Navigate to={`/profile/${me.data.id}`} />
+//   }
+
+//   return (
+//     <div className={styles.root}>
+//       <Navbar />
+//       <main className={styles.content}>
+//         <ProfilePage/>
+//       </main>
+//     </div>
+//   )
+// }
 
 const HomePage: React.FC = () => {
-  const { data: me, isLoading } = useGetMeQuery()
+  const { data: me, isLoading } = useGetMeQuery();
 
-  if (isLoading) {
-    return <h1>Загрузка...</h1>
-  }
+  if (isLoading) return <h1>Загрузка...</h1>;
 
   if (!me?.data.id) {
-    return null
+    return <Navigate to={appRoutes.login} />;
   }
 
-  if (me) {
-    return <Navigate to={`/profile/${me.data.id}`} />
-  }
+  return <Navigate to={appRoutes.profileById(me.data.id)} />;
+};
 
-  return (
-    <div className={styles.root}>
-      <Navbar />
-      <main className={styles.content}>
-        <ProfilePage/>
-      </main>
-    </div>
-  )
-}
-
-export default HomePage
+export default HomePage;

@@ -1,11 +1,10 @@
-import React from 'react'
-import { LoginForm } from '@features/Auth'
-import { Header } from '@widgets/Header'
+import React from "react";
+import { LoginForm } from "@features/Auth";
+import { Header } from "@widgets/Header";
 
-import styles from './LoginPage.module.scss'
+import styles from "./LoginPage.module.scss";
 
 const LoginPage = () => {
-  
   return (
     <div className={styles.root}>
       <Header />
@@ -13,7 +12,7 @@ const LoginPage = () => {
         <LoginForm />
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
